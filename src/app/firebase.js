@@ -2,17 +2,24 @@
 import { initializeApp } from "firebase/app";
 // https://firebase.google.com/docs/web/setup#available-libraries
 import { getAuth } from "firebase/auth";
+import firebase from "firebase/compat/app";
+// Required for side-effects
+import { getFirestore } from "firebase/firestore";
+
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBhjYvi8iPKbvQIVGfTLY37_7xNIEYBP5c",
-  authDomain: "fir-app-aut.firebaseapp.com",
-  projectId: "fir-app-aut",
-  storageBucket: "fir-app-aut.appspot.com",
-  messagingSenderId: "1093491369677",
-  appId: "1:1093491369677:web:0b74b1bec102668e112b84",
+  apiKey: process.env.apiKey,
+  authDomain: process.env.authDomain,
+  projectId: process.env.projectId,
+  storageBucket: process.env.storageBucket,
+  messagingSenderId: process.env.messagingSenderId,
+  appId: process.env.appId,
 };
 
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
+
+// Initialize Cloud Firestore and get a reference to the service
+export const db = getFirestore(app);
